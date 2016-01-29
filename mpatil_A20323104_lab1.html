@@ -8,6 +8,10 @@
             h2 {text-align: centre;}
             body {background-color:#F6E6FA; }
          
+            .result {
+                border: 4px;
+            }
+            
             
            
          
@@ -18,16 +22,65 @@
      <body>
          <h1>ITMD 565 Lab 1</h1>
          <h2>Mahak Patil | mpatil@hawk.iit.edu</h2>
-        <p>Body Text: <input id="Bodytext" type="text"></p>
+        <p>Body Text: <input id="BodyText" type="text" style="width: 145px"></p>
         
-        <p>Quantity: <input id="Quantity" type="text"></p>
+        <p>Quantity: <input id="Quantity" type="text" style="width: 145px;"></p>
         
-        <p>Color: <select> 
+       <div id="Color" <p>Color:  <select style="width: 145px;"> 
                      <option value="Red">Red</option>
                      <option value="Blue">Blue</option>
                      <option value="Green">Green</option>       
-                  </select> </p>
+                  </select>  </p></div>
         <p> <button id="RunLab">Run Lab</button>
          <button id="ResetLab">Reset Lab</button> </p>
+         
+         <div id="resultsContainer"></div>
+         
+         <script type="text/javascript">
+             
+             //getting elements
+             var body = document.getElementById('BodyText');
+             var quantity = document.getElementById('Quantity');
+             var color = document.getElementById('Color');
+             
+             var runButton = document.getElementById('RunLab');
+             var resetButton = document.getElementById('ResetLab');
+             
+             var resultsCtr = document.getElementById('resultsContainer');
+             
+             //adding event listeners
+             runButton.addEventListener('click', function(){
+                 
+                 for (var i = 0; i < quantity; i++){
+                   
+                   var divWrapper = document.createElement('div');
+				divWrapper.id = 'div-wrapper' + i;
+				divWrapper.className = 'result';
+				var resultLine = document.createElement('h2');
+				resultLine.style.color = color;
+				var hdtext = document.createTextNode('Result');
+				resultLine.appendChild(hdtext);
+				divWrapper.appendChild(resultLine);
+
+				var p1 = document.createElement('p');
+				var p1t = document.createTextNode(body);
+				p1.appendChild(p1t);
+				divWrapper.appendChild(p1);  
+                
+                resultsCtr.appendChild(divWrapper);
+                     
+                 }; //end inner for loop
+                 
+                 
+             } //end function() 
+             ); //end addEventListener
+             
+             resetButton.addEventListener('click', function(){
+                 
+                 
+             } //end function() 
+             ); //end addEventListener
+         </script>
+         
      </body>
 </html>
