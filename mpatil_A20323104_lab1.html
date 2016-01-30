@@ -26,11 +26,11 @@
         
         <p>Quantity: <input id="Quantity" type="text" style="width: 145px;"></p>
         
-       <div id="Color" <p>Color:  <select style="width: 145px;"> 
-                     <option value="Red">Red</option>
-                     <option value="Blue">Blue</option>
-                     <option value="Green">Green</option>       
-                  </select>  </p></div>
+        <p>Color:  <select id="Color" style="width: 145px;"> 
+                     <option value="red">Red</option>
+                     <option value="blue">Blue</option>
+                     <option value="green">Green</option>       
+                  </select>  </p>
         <p> <button id="RunLab">Run Lab</button>
          <button id="ResetLab">Reset Lab</button> </p>
          
@@ -39,20 +39,47 @@
          <script type="text/javascript">
              
              //getting elements
-             var body = document.getElementById('BodyText');
-             var quantity = document.getElementById('Quantity');
-             var color = document.getElementById('Color');
+            
              
              var runButton = document.getElementById('RunLab');
              var resetButton = document.getElementById('ResetLab');
-             
+          
              var resultsCtr = document.getElementById('resultsContainer');
              
              //adding event listeners
              runButton.addEventListener('click', function(){
                  
+                 var body = document.getElementById('BodyText').value;
+                  var quantity = document.getElementById('Quantity').value;
+                
+                //check if all inputs were entered
+                 if ( quantity == "" || body =="" ){
+                     window.alert("Enter all fields");
+                 }
+                 
+            
+                 console.log(body);
+                 console.log(quantity);
+                 
+                 //get color
+               /*  function loadSettings() {
+                if (localStorage['Color']) {
+                input.value = localStorage['Color'];
+                     }
+                    }
+
+                function saveSettings() {
+                localStorage['Color'] = input.value;
+                }
+                loadSettings();
+                saveSettings(); 
+              */
+              var color = document.getElementById('Color').value;
+                console.log(color);
+       
+       
                  for (var i = 0; i < quantity; i++){
-                   document.write(body);
+                     
                  var divWrapper = document.createElement('div');
 				divWrapper.id = 'div-wrapper' + i;
 				divWrapper.className = 'result';
