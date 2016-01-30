@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="UTF-8">
         <title>Lab 1</title>
@@ -10,10 +12,11 @@
          
             .result {
                 border: 4px;
+                border: color;
             }
             
             
-           
+          
          
          </style>
     </head>
@@ -37,55 +40,30 @@
          <div id="resultsContainer"></div>
          
          <script type="text/javascript">
-             
              //getting elements
-            
-             
              var runButton = document.getElementById('RunLab');
              var resetButton = document.getElementById('ResetLab');
-          
              var resultsCtr = document.getElementById('resultsContainer');
              
              //adding event listeners
              runButton.addEventListener('click', function(){
-                 
-                 var body = document.getElementById('BodyText').value;
+            
+                  var body = document.getElementById('BodyText').value;
                   var quantity = document.getElementById('Quantity').value;
-                
+                  var color = document.getElementById('Color').value;
                 //check if all inputs were entered
                  if ( quantity == "" || body =="" ){
-                     window.alert("Enter all fields");
+                 window.alert("Enter all fields");
                  }
-                 
-            
-                 console.log(body);
-                 console.log(quantity);
-                 
-                 //get color
-               /*  function loadSettings() {
-                if (localStorage['Color']) {
-                input.value = localStorage['Color'];
-                     }
-                    }
-
-                function saveSettings() {
-                localStorage['Color'] = input.value;
-                }
-                loadSettings();
-                saveSettings(); 
-              */
-              var color = document.getElementById('Color').value;
-                console.log(color);
-       
-       
-                 for (var i = 0; i < quantity; i++){
+                
+                for (var i = 1; i <= quantity; i++){
                      
-                 var divWrapper = document.createElement('div');
+                var divWrapper = document.createElement('div');
 				divWrapper.id = 'div-wrapper' + i;
 				divWrapper.className = 'result';
 				var resultLine = document.createElement('h2');
 				resultLine.style.color = color;
-				var hdtext = document.createTextNode('Result');
+                var hdtext = document.createTextNode('Output' + " " +i);
 				resultLine.appendChild(hdtext);
 				divWrapper.appendChild(resultLine);
 
@@ -95,16 +73,30 @@
 				divWrapper.appendChild(p1);  
                 
                 resultsCtr.appendChild(divWrapper);
-                     
-                 }; //end inner for loop
-                 
-                 
+                
+                //check if resultsContainer has child nodes
+                 var ans = document.getElementById("resultsContainer").hasChildNodes();
+            if (ans == "false"){
+                document.getElementById("ResetLab").disabled = true;
+            
+             }
+             
+             else document.getElementById("ResetLab").disabled = false;
+             }; //end inner for loop
+             //clearing input fields  
+               document.getElementById('BodyText').value = "";
+               document.getElementById('Quantity').value = "";
              } //end function() 
              ); //end addEventListener
              
+             
+             
              resetButton.addEventListener('click', function(){
                  
-                 
+                 document.getElementById('BodyText').value = "";
+               document.getElementById('Quantity').value = "";
+               document.getElementById("ResetLab").disabled = true;
+            
              } //end function() 
              ); //end addEventListener
          </script>
