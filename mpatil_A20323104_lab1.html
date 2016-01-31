@@ -12,18 +12,15 @@
          
             .result {
                 border: 4px;
-                border: color;
+                
             }
-            
-            
-          
-         
+       
          </style>
     </head>
     
     
      <body>
-         <h1>ITMD 565 Lab 1</h1>
+         <h1>ITMD 565 - Lab 1</h1>
          <h2>Mahak Patil | mpatil@hawk.iit.edu</h2>
         <p>Body Text: <input id="BodyText" type="text" style="width: 145px"></p>
         
@@ -48,16 +45,26 @@
              //adding event listeners
              runButton.addEventListener('click', function(){
             
+                //clear all child nodes before starting execution.
+                 while (resultsCtr.hasChildNodes()){
+                     resultsCtr.removeChild(resultsCtr.lastChild);
+                     
+                 }
+                 
                   var body = document.getElementById('BodyText').value;
-                  var quantity = document.getElementById('Quantity').value;
+                  var amount = document.getElementById('Quantity').value;
+                  var quantity = parseInt(amount);
                   var color = document.getElementById('Color').value;
+                  resultsCtr.style.borderColor= "purple";
                 //check if all inputs were entered
                  if ( quantity == "" || body =="" ){
                  window.alert("Enter all fields");
+                 return;
                  }
                 
                 for (var i = 1; i <= quantity; i++){
                      
+                
                 var divWrapper = document.createElement('div');
 				divWrapper.id = 'div-wrapper' + i;
 				divWrapper.className = 'result';
