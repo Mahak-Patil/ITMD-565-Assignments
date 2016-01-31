@@ -99,11 +99,16 @@
              
              
              resetButton.addEventListener('click', function(){
-                 
+                
+                while (resultsCtr.hasChildNodes()){
+                     resultsCtr.removeChild(resultsCtr.lastChild);
+                     
+                 } 
                  document.getElementById('BodyText').value = "";
                document.getElementById('Quantity').value = "";
                document.getElementById("ResetLab").disabled = true;
-            
+              
+              
              } //end function() 
              ); //end addEventListener
          </script>
