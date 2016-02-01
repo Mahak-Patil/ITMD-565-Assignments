@@ -6,14 +6,20 @@
         <meta charset="UTF-8">
         <title>Lab 1</title>
         <style type="text/css">
-            h1 {text-align: left;}
+            h1 {text-align: centre;}
             h2 {text-align: centre;}
             body {background-color:#F6E6FA; }
          
             .result {
-                border: 4px;
                 
-            }
+                border: 4px solid;
+                padding: 0% 4% 4% 4%;
+                 }
+            
+            .enterSpace {
+                
+                padding: .9%
+                 }
        
          </style>
     </head>
@@ -21,7 +27,7 @@
     
      <body>
          <h1>ITMD 565 - Lab 1</h1>
-         <h2>Mahak Patil | mpatil@hawk.iit.edu</h2>
+         <h2>Mahak Patil | <a href="mailto:mpatil@hawk.iit.edu" target="_blank">mpatil@hawk.iit.edu</a> </h2>
         <p>Body Text: <input id="BodyText" type="text" style="width: 145px"></p>
         
         <p>Quantity: <input id="Quantity" type="text" style="width: 145px;"></p>
@@ -31,9 +37,8 @@
                      <option value="blue">Blue</option>
                      <option value="green">Green</option>       
                   </select>  </p>
-        <p> <button id="RunLab">Run Lab</button>
+         <p> <button id="RunLab">Run Lab</button>
          <button id="ResetLab">Reset Lab</button> </p>
-         
          <div id="resultsContainer"></div>
          
          <script type="text/javascript">
@@ -51,66 +56,72 @@
                      
                  }
                  
+                 //getting remaining elements
                   var body = document.getElementById('BodyText').value;
                   var amount = document.getElementById('Quantity').value;
                   var quantity = parseInt(amount);
                   var color = document.getElementById('Color').value;
-                  resultsCtr.style.borderColor= "purple";
-                //check if all inputs were entered
-                 if ( quantity == "" || body =="" ){
-                 window.alert("Enter all fields");
+               
+                //check if individual inputs were entered
+                if (BodyText.value.length < 1){
+                     window.alert("Enter input in the Body Text field");
+                     return;
+                 }
+                else if ( isNaN(Quantity.value) || Quantity.value.length < 1 ){
+                 window.alert("Enter a NUMBER in the Quantity field");
                  return;
                  }
                 
                 for (var i = 1; i <= quantity; i++){
-                     
                 
                 var divWrapper = document.createElement('div');
 				divWrapper.id = 'div-wrapper' + i;
 				divWrapper.className = 'result';
 				var resultLine = document.createElement('h2');
-				resultLine.style.color = color;
-                var hdtext = document.createTextNode('Output' + " " +i);
-				resultLine.appendChild(hdtext);
+               var hdtext = document.createTextNode('Output' + " " +i);
+                resultLine.style.color= color;//color of text DO NOT CHANGE THIS LINE!!
+                
+
+                resultLine.appendChild(hdtext);
 				divWrapper.appendChild(resultLine);
 
 				var p1 = document.createElement('p');
 				var p1t = document.createTextNode(body);
-				p1.appendChild(p1t);
+				
+                p1.appendChild(p1t);
 				divWrapper.appendChild(p1);  
                 
-                resultsCtr.appendChild(divWrapper);
+                //adding space between outputs
+                var spaceBetweenOutputs = document.createElement('div');
+                spaceBetweenOutputs.className = "enterSpace";
                 
-                //check if resultsContainer has child nodes
+                resultsCtr.appendChild(divWrapper);
+                resultsCtr.appendChild(spaceBetweenOutputs);
+                
+                //check if resultsContainer has child nodes to enable/disable Reset button
                  var ans = document.getElementById("resultsContainer").hasChildNodes();
-            if (ans == "false"){
+                if (ans == "false"){
                 document.getElementById("ResetLab").disabled = true;
             
-             }
+                     }
+                 else document.getElementById("ResetLab").disabled = false;
+                  }; //end inner for loop
              
-             else document.getElementById("ResetLab").disabled = false;
-             }; //end inner for loop
-             //clearing input fields  
+             //clearing input fields after successful attempt
                document.getElementById('BodyText').value = "";
                document.getElementById('Quantity').value = "";
              } //end function() 
              ); //end addEventListener
              
              
-             
+             //adding second event listener
              resetButton.addEventListener('click', function(){
                 
-                while (resultsCtr.hasChildNodes()){
-                     resultsCtr.removeChild(resultsCtr.lastChild);
-                     
-                 } 
-                 document.getElementById('BodyText').value = "";
-               document.getElementById('Quantity').value = "";
-               document.getElementById("ResetLab").disabled = true;
-              
+                 location.reload();
               
              } //end function() 
              ); //end addEventListener
+             
          </script>
          
      </body>
