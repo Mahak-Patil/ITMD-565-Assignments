@@ -38,7 +38,7 @@
                      <option value="green">Green</option>       
                   </select>  </p>
          <p> <button id="RunLab">Run Lab</button>
-         <button id="ResetLab">Reset Lab</button> </p>
+     <button id="ResetLab">Reset Lab</button> </p>
          <div id="resultsContainer"></div>
          
          <script type="text/javascript">
@@ -72,6 +72,7 @@
                  return;
                  }
                 
+                
                 for (var i = 1; i <= quantity; i++){
                 
                 var divWrapper = document.createElement('div');
@@ -101,7 +102,6 @@
                 //adding new line for setting border color
                 
                var local = document.getElementById("div-wrapper"+i).style.border = "4px solid "+color;
-                console.log(local);
                 
                 
                 //check if resultsContainer has child nodes to enable/disable Reset button
@@ -116,6 +116,7 @@
              //clearing input fields after successful attempt
                document.getElementById('BodyText').value = "";
                document.getElementById('Quantity').value = "";
+               
              } //end function() 
              ); //end addEventListener
              
@@ -123,10 +124,14 @@
              //adding second event listener
              resetButton.addEventListener('click', function(){
                 
-                 location.reload();
-              
+                document.getElementById("ResetLab").disabled = true;
+                 document.getElementById('BodyText').value = "";
+               document.getElementById('Quantity').value = "";
+                //location.reload();
+                 
              } //end function() 
              ); //end addEventListener
+             
              
          </script>
          
