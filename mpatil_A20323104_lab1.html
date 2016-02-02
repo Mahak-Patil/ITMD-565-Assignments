@@ -81,7 +81,6 @@
                var hdtext = document.createTextNode('Output' + " " +i);
                 resultLine.style.color= color;//color of text DO NOT CHANGE THIS LINE!!
                 
-
                 resultLine.appendChild(hdtext);
 				divWrapper.appendChild(resultLine);
 
@@ -95,8 +94,15 @@
                 var spaceBetweenOutputs = document.createElement('div');
                 spaceBetweenOutputs.className = "enterSpace";
                 
+                
                 resultsCtr.appendChild(divWrapper);
                 resultsCtr.appendChild(spaceBetweenOutputs);
+                
+                //adding new line for setting border color
+                
+               var local = document.getElementById("div-wrapper"+i).style.border = "4px solid "+color;
+                console.log(local);
+                
                 
                 //check if resultsContainer has child nodes to enable/disable Reset button
                  var ans = document.getElementById("resultsContainer").hasChildNodes();
