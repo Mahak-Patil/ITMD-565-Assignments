@@ -124,10 +124,19 @@
              //adding second event listener
              resetButton.addEventListener('click', function(){
                 
+                //disable Reset button
                 document.getElementById("ResetLab").disabled = true;
-                 document.getElementById('BodyText').value = "";
+                
+                //clear all child nodes 
+                 while (resultsCtr.hasChildNodes()){
+                     resultsCtr.removeChild(resultsCtr.lastChild);
+                     
+                 }
+                 
+                 //clearing input values
+               document.getElementById('BodyText').value = "";
                document.getElementById('Quantity').value = "";
-                //location.reload();
+          
                  
              } //end function() 
              ); //end addEventListener
