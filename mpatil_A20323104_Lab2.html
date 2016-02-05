@@ -28,10 +28,32 @@
 }
 
 
+        table {
+    width:100%;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: lightgrey;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th	{
+    background-color: black;
+    color: white;
+}
 
          </style>
+          
     </head>
-    
     
      <body>
           <h1> ITMD 565 - Lab 2 </h1>
@@ -43,7 +65,20 @@
        </div>
        
        <div id="resultsContainer"></div>
-       
+       </body>
+      <div id="resultsTable"> <table style="width:100%">
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>		
+    <th>Last Name</th>
+    <th>Title</th>
+    <th>Email</th>
+    <th>Gender</th>
+    <th>Active</th>
+  </tr>
+ </table>
+   </div>
+   <body>
        <script type="text/javascript">
        var loadDataButton = document.getElementById('LoadData');
        var resetButton = document.getElementById('Reset');
@@ -56,10 +91,7 @@
         resetButton.addEventListener('click', reset);
          //event handler for Reset button
        
-     //  function generateFirstRow(){
-         
-         //function generates the header row
-    // }
+     
      
        function deleteAllRows(){
            
@@ -72,15 +104,43 @@
        }
        
        
+  /*     
+       
+    function appendRow() {
+    var tbl = document.getElementById('resultsTable'), // table reference
+      //  row = tbl.insertRow(tbl.rows.length),      // append table row
+       // i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+        createCell(row.insertCell(i), i, 'row');
+    }
+}
+ 
+// create DIV element and append to the table cell
+function createCell(cell, text, style) {
+    var div = document.createElement('div'), // create DIV element
+        txt = document.createTextNode(text); // create text node
+    div.appendChild(txt);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}   
+       
+       
+      */ 
+       
+       
+    
+       
        function loadFromAjax(){
            
           // generateFirstRow();
-          
+          resultsTable.appendChild(resultsCtr);
             var temp =document.getElementById("LoadData").disabled = true; //disable load data button
             var temp =document.getElementById("Reset").disabled = false;
           
             function getXMLHttpRequest(){
-                    if (window.XMLHttpRequest) {
+                    if (window.XMLHttpRequest) { //check if the browser supports the XMLHttpRequest object
                         return new XMLHttpRequest();
                     }
                     else {
@@ -99,11 +159,17 @@
                 if (xhr != null) {
                     xhr.open("GET", "http://libertyville.rice.iit.edu/scripts/lab2.php", true);
                     xhr.onreadystatechange = function(){
-                        if (xhr.readyState == 10) {
+                        if (xhr.readyState == 4) {
                             xhr_results = xhr.responseText;
-                            document.getElementById('resultsContainer').innerHTML = xhr_results;
-                            //document.getElementById('delete-js-btn').style.display = 'inline';
-                        }
+                            var obj = JSON.parse(xhr_results);
+                            
+                            for (var i = 0; i<= 29; i++){
+                                //create divs here
+                                //appendRow();
+                               
+                                document.getElementById("resultsContainer").innerHTML = obj[i].id  + "   " + obj[i]. gender;
+                            }
+                           }
                     };
                     xhr.send();
                 }
@@ -124,6 +190,11 @@
      
        
        </script>
+      
+         
+         
+         
+     
          </body>
          
          </html>
