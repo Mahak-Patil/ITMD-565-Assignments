@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Lab 2</title>
+        <style type="text/css">
+            h1 {text-align: center;}
+            h2 {text-align: center;}
+            body 
+         
+            .result {
+                
+                border: 4px solid;
+                padding: 0% 4% 4% 4%;
+                 }
+            
+            .enterSpace {
+                
+                padding: .9%
+                 }
+       
+       
+            .center {
+    margin: auto;
+    width: 20%;
+    padding: 10px;
+}
+
+
+
+         </style>
+    </head>
+    
+    
+     <body>
+          <h1> ITMD 565 - Lab 2 </h1>
+         <h2> Mahak Patil | <a href="mpatil@hawk.iit.edu" target="_blank">mpatil@hawk.iit.edu</a> </h2>
+         
+         <div class="center">
+         <b> <button style="background-color:lightgrey" id="LoadData">Load Data</button>
+         <b><button style="background-color:lightgrey" id="Reset">Reset</button>
+       </div>
+       
+       <div id="resultsContainer"></div>
+       
+       <script type="text/javascript">
+       var loadDataButton = document.getElementById('LoadData');
+       var resetButton = document.getElementById('Reset');
+       var resultsCtr = document.getElementById('resultsContainer');
+       //function generateFirstRow(); //add "Employee List" and header row
+      
+       //event handler for Load Data button
+       loadDataButton.addEventListener('click', loadFromAjax);
+        
+        resetButton.addEventListener('click', reset);
+         //event handler for Reset button
+       
+     //  function generateFirstRow(){
+         
+         //function generates the header row
+    // }
+     
+       function deleteAllRows(){
+           
+           //function deletes entire table i.e all nodes
+           var element = document.getElementById('resultsContainer');
+       while (element.firstChild) {
+                     element.removeChild(element.firstChild);
+       }   
+       
+       }
+       
+       
+       function loadFromAjax(){
+           
+          // generateFirstRow();
+          
+            var temp =document.getElementById("LoadData").disabled = true; //disable load data button
+            var temp =document.getElementById("Reset").disabled = false;
+          
+            function getXMLHttpRequest(){
+                    if (window.XMLHttpRequest) {
+                        return new XMLHttpRequest();
+                    }
+                    else {
+                        try {
+                            return new ActiveXObject("MSXML2.XMLHTTP.3.0");
+                        }
+                        catch(ex) {
+                            return null;
+                        }
+                    }
+                }
+
+                //var xhr = getXMLHttpRequest();
+                var xhr = new XMLHttpRequest(); //This is all you would need for IE7+
+                var xhr_results = '';
+                if (xhr != null) {
+                    xhr.open("GET", "http://libertyville.rice.iit.edu/scripts/lab2.php", true);
+                    xhr.onreadystatechange = function(){
+                        if (xhr.readyState == 10) {
+                            xhr_results = xhr.responseText;
+                            document.getElementById('resultsContainer').innerHTML = xhr_results;
+                            //document.getElementById('delete-js-btn').style.display = 'inline';
+                        }
+                    };
+                    xhr.send();
+                }
+            //do AJAX request here to get data from URl
+            
+       }
+     
+     function reset(){
+         
+         deleteAllRows();
+        // generateFirstRow();
+         var temp =document.getElementById("LoadData").disabled = false; //enable load data button
+         var temp =document.getElementById("Reset").disabled = true; //disable reset button
+     }
+     
+      
+     
+     
+       
+       </script>
+         </body>
+         
+         </html>
