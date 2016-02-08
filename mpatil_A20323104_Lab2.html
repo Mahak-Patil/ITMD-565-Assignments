@@ -92,7 +92,8 @@ table#t01 th	{
          //event handler for Reset button
        
      
-     
+//------------------------------------------------------------------------------------------------------------
+      
        function deleteAllRows(){
            
            //function deletes entire table i.e all nodes
@@ -103,35 +104,8 @@ table#t01 th	{
        
        }
        
-       
-  /*     
-       
-    function appendRow() {
-    var tbl = document.getElementById('resultsTable'), // table reference
-      //  row = tbl.insertRow(tbl.rows.length),      // append table row
-       // i;
-    // insert table cells to the new row
-    for (i = 0; i < tbl.rows[0].cells.length; i++) {
-        createCell(row.insertCell(i), i, 'row');
-    }
-}
- 
-// create DIV element and append to the table cell
-function createCell(cell, text, style) {
-    var div = document.createElement('div'), // create DIV element
-        txt = document.createTextNode(text); // create text node
-    div.appendChild(txt);                    // append text node to the DIV
-    div.setAttribute('class', style);        // set DIV class attribute
-    div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
-    cell.appendChild(div);                   // append DIV to the table cell
-}   
-       
-       
-      */ 
-       
-       
-    
-       
+//-------------------------------------------------------------------------------------------------------------  
+   
        function loadFromAjax(){
            
           // generateFirstRow();
@@ -140,6 +114,7 @@ function createCell(cell, text, style) {
             var temp =document.getElementById("Reset").disabled = false;
           
             function getXMLHttpRequest(){
+                
                     if (window.XMLHttpRequest) { //check if the browser supports the XMLHttpRequest object
                         return new XMLHttpRequest();
                     }
@@ -151,19 +126,22 @@ function createCell(cell, text, style) {
                             return null;
                         }
                     }
-                }
+                } //end of getXMLHttpRequest()
                 
                 var myBody = document.getElementsByTagName("body")[0] ;
   
                 var xhr = new XMLHttpRequest(); //This is all you would need for IE7+
                 var xhr_results = '';
+               
                 if (xhr != null) {
+                    var resultsTable = document.createElement("table");
+                    var resultsTableBody = document.createElement("tbody");
+                            
                     xhr.open("GET", "http://libertyville.rice.iit.edu/scripts/lab2.php", true);
+                    
                     xhr.onreadystatechange = function(){
                         if (xhr.readyState == 4) {
-                           var resultsTable = document.createElement("table");
-                            var resultsTableBody = document.createElement("tbody");
-                            
+                           
              for (var j = 0; j<30; j++){
              myCurrentRow = document.createElement("tr");
              
@@ -176,27 +154,22 @@ function createCell(cell, text, style) {
              var currentText = document.createTextNode(text);
              myCurrentCell.appendChild(currentText);
              myCurrentRow.appendChild(myCurrentCell);
-         }
+         } //enf of for loop (i)
                               
-                              //  document.getElementById("resultsContainer").innerHTML = obj[i].id  + "   " + obj[i]. gender;
+             //  document.getElementById("resultsContainer").innerHTML = obj[i].id  + "   " + obj[i]. gender;
              resultsTableBody.appendChild(myCurrentRow);
-                           }
+                           } //end of for loop (j)
                            resultsTable.appendChild(resultsTableBody);
          myBody.appendChild(resultsTable);
          resultsTable.setAttribute("border","2");
-                    };
+                    }; //end of if (xhr.readystate)
                     xhr.send();
-                }
-                }
-       }
+                } //end of onreadystatechange
+                } //end of if loop
+       } //end of main function
             
-       
-       
-       
-       
-       
-       
-     
+//---------------------------------------------------------------------------------------------------------------- 
+
      function reset(){
          
          deleteAllRows();
@@ -204,17 +177,8 @@ function createCell(cell, text, style) {
          var temp =document.getElementById("LoadData").disabled = false; //enable load data button
          var temp =document.getElementById("Reset").disabled = true; //disable reset button
      }
-     
-      
-     
-     
-       
+  
+//--------------------------------------------------------------------------------------------------------------------
        </script>
-      
-         
-         
-         
-     
-         </body>
-         
-         </html>
+    </body>
+  </html>
