@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+        
+     
+         <script>
+         function generateTable(){
+         var myBody = document.getElementsByTagName("body")[0] ;
+         
+         var myTable = document.createElement("table");
+         var myTableBody = document.createElement("tbody");
+         
+         for (var j = 0; j<2; j++){
+             myCurrentRow = document.createElement("tr");
+             
+             for (var i = 0; i<2; i++){
+             var myCurrentCell = document.createElement("td");
+             var currentText = document.createTextNode("cell is here!");
+             myCurrentCell.appendChild(currentText);
+             myCurrentRow.appendChild(myCurrentCell);
+         }
+         myTableBody.appendChild(myCurrentRow);
+         }
+         myTable.appendChild(myTableBody);
+         myBody.appendChild(myTable);
+         myTable.setAttribute("border","2");
+         }
+         </script>
+         <body>
+             <input type="button" value="make table appear" onclick="generateTable()">
+             
+     </body>
+</html>
