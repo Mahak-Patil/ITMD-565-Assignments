@@ -152,30 +152,50 @@ function createCell(cell, text, style) {
                         }
                     }
                 }
-
-                //var xhr = getXMLHttpRequest();
+                
+                var myBody = document.getElementsByTagName("body")[0] ;
+  
                 var xhr = new XMLHttpRequest(); //This is all you would need for IE7+
                 var xhr_results = '';
                 if (xhr != null) {
                     xhr.open("GET", "http://libertyville.rice.iit.edu/scripts/lab2.php", true);
                     xhr.onreadystatechange = function(){
                         if (xhr.readyState == 4) {
-                            xhr_results = xhr.responseText;
-                            var obj = JSON.parse(xhr_results);
+                           var resultsTable = document.createElement("table");
+                            var resultsTableBody = document.createElement("tbody");
                             
-                            for (var i = 0; i<= 29; i++){
-                                //create divs here
-                                //appendRow();
-                               
-                                document.getElementById("resultsContainer").innerHTML = obj[i].id  + "   " + obj[i]. gender;
-                            }
+             for (var j = 0; j<30; j++){
+             myCurrentRow = document.createElement("tr");
+             
+             for (var i = 0; i<7; i++){
+                              xhr_results = xhr.responseText;
+                            var obj = JSON.parse(xhr_results);
+                             var myCurrentCell = document.createElement("td");
+            var text = document.getElementById("resultsContainer").innerHTML = obj[i].id;
+            
+             var currentText = document.createTextNode(text);
+             myCurrentCell.appendChild(currentText);
+             myCurrentRow.appendChild(myCurrentCell);
+         }
+                              
+                              //  document.getElementById("resultsContainer").innerHTML = obj[i].id  + "   " + obj[i]. gender;
+             resultsTableBody.appendChild(myCurrentRow);
                            }
+                           resultsTable.appendChild(resultsTableBody);
+         myBody.appendChild(resultsTable);
+         resultsTable.setAttribute("border","2");
                     };
                     xhr.send();
                 }
-            //do AJAX request here to get data from URl
-            
+                }
        }
+            
+       
+       
+       
+       
+       
+       
      
      function reset(){
          

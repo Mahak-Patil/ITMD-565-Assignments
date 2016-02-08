@@ -8,23 +8,23 @@
          function generateTable(){
          var myBody = document.getElementsByTagName("body")[0] ;
          
-         var myTable = document.createElement("table");
-         var myTableBody = document.createElement("tbody");
+         var resultsTable = document.createElement("table");
+         var resultsTableBody = document.createElement("tbody");
          
          for (var j = 0; j<2; j++){
              myCurrentRow = document.createElement("tr");
              
-             for (var i = 0; i<2; i++){
+             for (var i = 0; i<7; i++){
              var myCurrentCell = document.createElement("td");
              var currentText = document.createTextNode("cell is here!");
              myCurrentCell.appendChild(currentText);
              myCurrentRow.appendChild(myCurrentCell);
          }
-         myTableBody.appendChild(myCurrentRow);
+         resultsTableBody.appendChild(myCurrentRow);
          }
-         myTable.appendChild(myTableBody);
-         myBody.appendChild(myTable);
-         myTable.setAttribute("border","2");
+         resultsTable.appendChild(resultsTableBody);
+         myBody.appendChild(resultsTable);
+         resultsTable.setAttribute("border","2");
          }
          </script>
          <body>
