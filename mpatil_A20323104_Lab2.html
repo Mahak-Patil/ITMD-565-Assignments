@@ -1,119 +1,72 @@
 <!DOCTYPE html>
-<html>
-
-    <head>
-        <meta charset="UTF-8">
-        <title>Lab 2</title>
-        <style type="text/css">
-            h1 {text-align: center;}
-            h2 {text-align: center;}
-            body 
-         
-            .result {
-                
-                border: 4px solid;
-                padding: 0% 4% 4% 4%;
-                 }
-            
-            .enterSpace {
-                
-                padding: .9%
-                 }
-       
-       
-            .center {
-    margin: auto;
-    width: 20%;
-    padding: 10px;
-}
-
-
-        table {
-    width:100%;
-}
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    background-color: lightgrey;
-}
-th, td {
-    padding: 5px;
-    text-align: left;
-}
-table#t01 tr:nth-child(even) {
-    background-color: #eee;
-}
-table#t01 tr:nth-child(odd) {
-   background-color:#fff;
-}
-table#t01 th	{
-    background-color: black;
-    color: white;
-}
-
-         </style>
-          
-    </head>
-    
-     <body>
-          <h1> ITMD 565 - Lab 2 </h1>
-         <h2> Mahak Patil | <a href="mpatil@hawk.iit.edu" target="_blank">mpatil@hawk.iit.edu</a> </h2>
-         
-         <div class="center">
-         <b> <button style="background-color:lightgrey" id="LoadData">Load Data</button>
-         <b><button style="background-color:lightgrey" id="Reset">Reset</button>
-       </div>
-       
-       <div id="resultsContainer"></div>
-       </body>
-      <div id="resultsTable"> <table style="width:100%">
-  <tr>
-    <th>ID</th>
-    <th>First Name</th>		
-    <th>Last Name</th>
-    <th>Title</th>
-    <th>Email</th>
-    <th>Gender</th>
-    <th>Active</th>
-  </tr>
- </table>
-   </div>
-   <body>
-       <script type="text/javascript">
-       var loadDataButton = document.getElementById('LoadData');
-       var resetButton = document.getElementById('Reset');
-       var resultsCtr = document.getElementById('resultsContainer');
-       //function generateFirstRow(); //add "Employee List" and header row
-      
-       //event handler for Load Data button
-       loadDataButton.addEventListener('click', loadFromAjax);
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Lab 2</title>
+	<style type="text/css">
+     h1 {text-align: center;}
+     h2 {text-align: center;}
+		
+		body {
+			text-align: center;
+		}
+		#table{
+			
+			padding: 0vw 7vw;
+		}
+		table{
+            border: solid black 1px;
+			border-collapse: collapse;
+			 vertical-align: center;
+            width: 90vw;
+			
+		}
         
-        resetButton.addEventListener('click', reset);
-         //event handler for Reset button
-       
-     
-//------------------------------------------------------------------------------------------------------------
-      
-       function deleteAllRows(){
-           
-           //function deletes entire table i.e all nodes
-           var element = document.getElementById('resultsContainer');
-       while (element.firstChild) {
-                     element.removeChild(element.firstChild);
-       }   
-       
-       }
-       
-//-------------------------------------------------------------------------------------------------------------  
-   
-       function loadFromAjax(){
-           
-          // generateFirstRow();
-          resultsTable.appendChild(resultsCtr);
-            var temp =document.getElementById("LoadData").disabled = true; //disable load data button
-            var temp =document.getElementById("Reset").disabled = false;
+        table tr:nth-child(1) {
+			background: darkgrey;
+		}
+        
+		tr:nth-child(odd) {
+			background-color: lightgrey;
+		}
+		td, th{
+            border: solid black 1px;
+			vertical-align: center;
+			text-align: left;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	
+			<h1>ITMD 565 - Lab 2</h1>
+			<h2>Mahak Patil | <a href="mpatil@hawk.iit.edu" target="_blank">mpatil@hawk.iit.edu</a> </h2>
+         
+
+		<div id= "table">
+			<button  style="background-color:lightgrey" id= "LoadData">Load Data</button>
+			<button  style="background-color:lightgrey" id= "Reset">Reset</button>
+			<h2 id= "HeaderText">Employee List:</h2>
+
+			<div id="results"></div>
+	
+		</div>
+	</div>
+</body>
+
+
+<script type="text/javascript">
+	document.getElementById("LoadData").addEventListener("click", loadFromAjax);
+	document.getElementById("Reset").addEventListener("click", reset);
+	
+//-----------------------------------------------------------------------------------------------------
+  
+ //event listener for Load Data button   
+	function loadFromAjax() {
+        var temp =document.getElementById("LoadData").disabled = true; //disable load data button
+        var temp =document.getElementById("Reset").disabled = false;//enable reset button
           
-            function getXMLHttpRequest(){
+       function getXMLHttpRequest(){
                 
                     if (window.XMLHttpRequest) { //check if the browser supports the XMLHttpRequest object
                         return new XMLHttpRequest();
@@ -126,59 +79,86 @@ table#t01 th	{
                             return null;
                         }
                     }
-                } //end of getXMLHttpRequest()
-                
-                var myBody = document.getElementsByTagName("body")[0] ;
-  
-                var xhr = new XMLHttpRequest(); //This is all you would need for IE7+
-                var xhr_results = '';
-               
-                if (xhr != null) {
-                    var resultsTable = document.createElement("table");
-                    var resultsTableBody = document.createElement("tbody");
-                            
-                    xhr.open("GET", "http://libertyville.rice.iit.edu/scripts/lab2.php", true);
-                    
-                    xhr.onreadystatechange = function(){
-                        if (xhr.readyState == 4) {
-                           
-             for (var j = 0; j<30; j++){
-             myCurrentRow = document.createElement("tr");
-             
-             for (var i = 0; i<7; i++){
-                              xhr_results = xhr.responseText;
-                            var obj = JSON.parse(xhr_results);
-                             var myCurrentCell = document.createElement("td");
-            var text = document.getElementById("resultsContainer").innerHTML = obj[i].id;
-            
-             var currentText = document.createTextNode(text);
-             myCurrentCell.appendChild(currentText);
-             myCurrentRow.appendChild(myCurrentCell);
-         } //enf of for loop (i)
-                              
-             //  document.getElementById("resultsContainer").innerHTML = obj[i].id  + "   " + obj[i]. gender;
-             resultsTableBody.appendChild(myCurrentRow);
-                           } //end of for loop (j)
-                           resultsTable.appendChild(resultsTableBody);
-         myBody.appendChild(resultsTable);
-         resultsTable.setAttribute("border","2");
-                    }; //end of if (xhr.readystate)
-                    xhr.send();
-                } //end of onreadystatechange
-                } //end of if loop
-       } //end of main function
-            
-//---------------------------------------------------------------------------------------------------------------- 
-
-     function reset(){
+                } //end of getXMLHttpRequest() 
+              //fucntion getXMLHttpRequest got from class demo
          
-         deleteAllRows();
-        // generateFirstRow();
-         var temp =document.getElementById("LoadData").disabled = false; //enable load data button
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+            if (xhr.readyState === 4 && xhr.status === 200) {
+				var objFromJSON = JSON.parse(xhr.responseText);
+				getData(objFromJSON);
+			}
+			
+		}; //end of onreadystatechange function
+        
+		xhr.open("GET", "http://libertyville.rice.iit.edu/scripts/lab2.php", true);
+		xhr.send();
+				
+		function getData(arr) { //function to parse and display data in tabular form
+				var tableDiv = "<table>";
+				
+                for (var i = 0; i < 1; i++) { //function to display ONLY header row
+				tableDiv += 
+					"<tr><td>" +
+					"ID" + "</td><td>" + 
+					"First Name" + "</td><td>" +
+					"Last Name" + "</td><td>" +
+					"Title" + "</td><td>" +
+					"Email" + "</td><td>" +
+					"Gender" + "</td><td>" +
+					"Active" + "</td>" +
+					"</tr>";
+                    
+					for (var i = 0; i < 30; i++) { //function to display ALL data rows
+						tableDiv += 
+						"<tr><td>" + 
+						arr[i].id + "</td><td>" + 
+						arr[i].first_name + "</td><td>" + 
+						arr[i].last_name + "</td><td>" + 
+						arr[i].title + "</td><td>" + 
+						arr[i].email + "</td><td>" +
+						arr[i].gender + "</td><td>" +
+						arr[i].active + "</td>" +
+						"</tr>";
+					}
+					tableDiv += "</table>";
+					document.getElementById('results').innerHTML = tableDiv;
+                }
+		}; //end of getData function
+	} //end of loadFromAjax function
+
+//-----------------------------------------------------------------------------------------------------
+    
+ //event listener for Reset button
+ function reset(){
+     document.getElementById('results').innerHTML = "";
+       displayHeaderRow();  
+       var temp =document.getElementById("LoadData").disabled = false; //enable load data button
          var temp =document.getElementById("Reset").disabled = true; //disable reset button
-     }
-  
-//--------------------------------------------------------------------------------------------------------------------
-       </script>
-    </body>
-  </html>
+     }; //end of for loop to display header row
+//}; //end of reset function
+
+//-----------------------------------------------------------------------------------------------------
+ 
+ function displayHeaderRow(){
+     var tableDiv = "<table>";
+				for (var i = 0; i < 1; i++) {
+					tableDiv += 
+					"<tr><td>" +
+					"ID" + "</td><td>" + 
+					"First Name" + "</td><td>" +
+					"Last Name" + "</td><td>" +
+					"Title" + "</td><td>" +
+					"Email" + "</td><td>" +
+					"Gender" + "</td><td>" +
+					"Active" + "</td>" +
+					"</tr>";
+                    tableDiv += "</table>";
+                    document.getElementById('results').innerHTML = tableDiv;
+                }//end of for loop
+ };//end of displayHeaderRow function
+ 
+//-----------------------------------------------------------------------------------------------------
+ 
+</script>
+</html>

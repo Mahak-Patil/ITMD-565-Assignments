@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Lab 2</title>
+	<style type="text/css">
+     h1 {text-align: center;}
+     h2 {text-align: center;}
+		
+		body {
+			text-align: center;
+		}
+		#table{
+			
+			padding: 0vw 7vw;
+		}
+		table{
+            border: solid black 1px;
+			border-collapse: collapse;
+			 vertical-align: center;
+            width: 90vw;
+			
+		}
+        
+        table tr:nth-child(1) {
+			background: darkgrey;
+		}
+        
+		tr:nth-child(odd) {
+			background-color: lightgrey;
+		}
+		td, th{
+            border: solid black 1px;
+			vertical-align: center;
+			text-align: left;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	
+			<h1>ITMD 565 - Lab 2</h1>
+			<h2>Mahak Patil | <a href="mpatil@hawk.iit.edu" target="_blank">mpatil@hawk.iit.edu</a> </h2>
+         
+
+		<div id= "table">
+			<button  style="background-color:lightgrey" id= "loadb">Load Data</button>
+			<button  style="background-color:lightgrey" id= "reset">Reset</button>
+			<h2 id= "HeaderText">Employee List</h2>
+
+			<div id="results"></div>
+	
+		</div>
+	</div>
+</body>
+
+
+<script type="text/javascript">
+	document.getElementById("loadb").addEventListener("click", load);
+	document.getElementById("reset").addEventListener("click", reset);
+	
+	function load() {
+		var newr = new XMLHttpRequest();
+		newr.onreadystatechange = function(){
+			//console.log("click");
+			if (newr.readyState === 4 && newr.status === 200) {
+				//console.log("get");
+				var objs = JSON.parse(newr.responseText);
+				parseData(objs);
+			}
+			
+		};
+		newr.open("GET", "http://libertyville.rice.iit.edu/scripts/lab2.php", true);
+		newr.send();
+				//console.log(newr);
+		function parseData(arr) {
+				//console.log(arr);
+
+				var resultDiv = "<table>";
+				//console.log(resultDiv);
+
+				for (var i = 0; i < 1; i++) {
+					//console.log(resultDiv);
+					resultDiv += 
+					"<tr><td>" +
+					"ID" + "</td><td>" + 
+					"First Name" + "</td><td>" +
+					"Last Name" + "</td><td>" +
+					"Title" + "</td><td>" +
+					"Email" + "</td><td>" +
+					"Gender" + "</td><td>" +
+					"Active" + "</td>" +
+					"</tr>";
+					for (var i = 0; i < 30; i++) {
+						//console.log(resultDiv);
+						resultDiv += 
+						"<tr><td>" + 
+						arr[i].id + "</td><td>" + 
+						arr[i].first_name + "</td><td>" + 
+						arr[i].last_name + "</td><td>" + 
+						arr[i].title + "</td><td>" + 
+						arr[i].email + "</td><td>" +
+						arr[i].gender + "</td><td>" +
+						arr[i].active + "</td>" +
+						"</tr>";
+					}
+					resultDiv += "</table>";
+					document.getElementById('results').innerHTML = resultDiv;
+				};
+		};
+	}
+    
+ function reset(){
+     document.getElementById('results').innerHTML = "";
+         
+        var resultDiv = "<table>";
+				//console.log(resultDiv);
+
+				for (var i = 0; i < 1; i++) {
+					//console.log(resultDiv);
+					resultDiv += 
+					"<tr><td>" +
+					"ID" + "</td><td>" + 
+					"First Name" + "</td><td>" +
+					"Last Name" + "</td><td>" +
+					"Title" + "</td><td>" +
+					"Email" + "</td><td>" +
+					"Gender" + "</td><td>" +
+					"Active" + "</td>" +
+					"</tr>";
+                    resultDiv += "</table>";
+                    document.getElementById('results').innerHTML = resultDiv;
+        // deleteAllRows();
+        // generateFirstRow();
+        
+         var temp =document.getElementById("loadb").disabled = false; //enable load data button
+         var temp =document.getElementById("reset").disabled = true; //disable reset button
+     }
+};
+
+</script>
+</html>
