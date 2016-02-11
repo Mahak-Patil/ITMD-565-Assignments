@@ -99,18 +99,19 @@
 				
                 for (var i = 0; i < 1; i++) { //function to display ONLY header row
 				tableDiv += 
-					"<tr><td>" +
-					"ID" + "</td><td>" + 
-					"First Name" + "</td><td>" +
-					"Last Name" + "</td><td>" +
-					"Title" + "</td><td>" +
-					"Email" + "</td><td>" +
-					"Gender" + "</td><td>" +
-					"Active" + "</td>" +
+					"<tr><th>" +
+					"ID" + "</th><th>" + 
+					"First Name" + "</th><th>" +
+					"Last Name" + "</th><th>" +
+					"Title" + "</th><th>" +
+					"Email" + "</th><th>" +
+					"Gender" + "</th><th>" +
+					"Active" + "</th>" +
 					"</tr>";
                     
 					for (var i = 0; i < 30; i++) { //function to display ALL data rows
-						tableDiv += 
+						
+                        tableDiv += 
 						"<tr><td>" + 
 						arr[i].id + "</td><td>" + 
 						arr[i].first_name + "</td><td>" + 
@@ -119,8 +120,9 @@
 						arr[i].email + "</td><td>" +
 						arr[i].gender + "</td><td>" +
 						arr[i].active + "</td>" +
-						"</tr>";
-					}
+                        "</tr>";
+                   
+                    }
 					tableDiv += "</table>";
 					document.getElementById('results').innerHTML = tableDiv;
                 }
@@ -144,14 +146,14 @@
      var tableDiv = "<table>";
 				for (var i = 0; i < 1; i++) {
 					tableDiv += 
-					"<tr><td>" +
-					"ID" + "</td><td>" + 
-					"First Name" + "</td><td>" +
-					"Last Name" + "</td><td>" +
-					"Title" + "</td><td>" +
-					"Email" + "</td><td>" +
-					"Gender" + "</td><td>" +
-					"Active" + "</td>" +
+					"<tr><th>" +
+					"ID" + "</th><th>" + 
+					"First Name" + "</th><th>" +
+					"Last Name" + "</th><th>" +
+					"Title" + "</th><th>" +
+					"Email" + "</th><th>" +
+					"Gender" + "</th><th>" +
+					"Active" + "</th>" +
 					"</tr>";
                     tableDiv += "</table>";
                     document.getElementById('results').innerHTML = tableDiv;
