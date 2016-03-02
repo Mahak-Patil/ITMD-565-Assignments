@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<style type="text/css">
+		div#perspective-container1 {
+			width: 500px;
+			height: 500px;
+			background-color: #ccc;
+			position: relative;
+			overflow: hidden;	
+		}
+		#perspective-container1 div.p-element {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin: 20px;
+			display: inline-block;
+			transform: perspective(500px) rotateY(0);
+			transition: transform 3s;
+		}
+		#perspective-container1 div.p-element.flip {
+			transform: perspective(500px) rotateY(180deg);
+		} 
+		div#perspective-container2 {
+			width: 500px;
+			height: 500px;
+			background-color: #ccc;
+			position: relative;
+			overflow: hidden;
+			perspective: 500px;	
+		}
+		#perspective-container2 div.p-element {
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			margin: 20px;
+			display: inline-block;
+			transition: transform 3s;
+		}
+		#perspective-container2 div.p-element.flip {
+			transform: rotateY(180deg);
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#btn').click(function(){
+				$('.p-element').toggleClass('flip');
+			});
+		});
+	</script>
+</head>
+<body>
+	
+	<div id="perspective-container1">
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+	</div>
+	<button id="btn">Flip</button>
+	<div id="perspective-container2">
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+		<div class="p-element"></div>
+	</div>
+</body>
+</html>

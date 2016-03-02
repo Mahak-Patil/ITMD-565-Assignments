@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2d transforms</title>
+	<style type="text/css">
+		.trans {
+			background-color: red;
+			width: 100px;
+			height: 100px;
+		}
+		#scale:hover {
+			transform: scale(2,2);
+		}
+		#translate:hover {
+			transform: translate(30px,30px);
+		}
+		#rotate:hover {
+			transform: rotate(45deg);
+		}
+		#skew:hover {
+			transform: skew(15deg, 15deg);
+		}
+		#matrix:hover {
+			transform: matrix(2, -0.5, 0.5, 2, 100, 100);
+		}
+		#transition {
+			background-color: blue;
+			width: 200px;
+			height: 200px;
+			transition-property: width, height, background-color;
+			transition-duration: 1s, 4s, 4s;
+			transition-timing-function: ease;
+			transition-delay: 3s, 0s, 0s;
+		}
+		#transition.active {
+			width: 400px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div style="max-width: 800px; margin:0 auto;background-color: #eee;">
+		<h2>Transforms</h2>
+		<h3>Scale</h3>
+		<div id="scale" class="trans"></div>
+		<h3>Translate</h3>
+		<div id="translate" class="trans"></div>
+		<h3>Rotate</h3>
+		<div id="rotate" class="trans"></div>
+		<h3>Skew</h3>
+		<div id="skew" class="trans"></div>
+		<h3>Matrix</h3>
+		<div id="matrix" class="trans"></div>
+	</div>
+	<div style="max-width: 800px; margin:0 auto;background-color: #eee;margin-top: 30px;">
+		<h2>Transitions</h2>
+		<button id="onbtn">Class On</button><button id="offbtn">Class Off</button>
+		<div id="transition"></div>
+	</div>
+	<script type="text/javascript">
+		var btn = document.getElementById('onbtn');
+		btn.addEventListener('click', function(e){
+			document.getElementById('transition').className = 'active';
+		});
+		var btn2 = document.getElementById('offbtn');
+		btn2.addEventListener('click', function(e){
+			document.getElementById('transition').className = '';
+		});
+	</script>
+</body>
+</html>
