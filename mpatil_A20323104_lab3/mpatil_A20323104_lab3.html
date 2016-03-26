@@ -17,11 +17,14 @@
 	</style>
 </head>
 <body>
+    
 	<div id="content-wrapper">
 		<button id="canvasRun">Draw Canvas</button><br><br>
 		<canvas id="myCanvas" width="600" height="450"></canvas>
-	    <img id="IIT" width="" height="" src="">
-    </div>
+	    
+        </div>
+        
+        
 	<script type="text/javascript">
 		// Canvas Drawing Code Here
        // Creating the gradient:
@@ -31,11 +34,18 @@
        var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 //creating backround gradient
+
 var grd = ctx.createLinearGradient(0,0,0,450);
 grd.addColorStop(1,"black");
 grd.addColorStop(0,"white");
 ctx.fillStyle = grd;
 ctx.fillRect(10,10,600,450);
+
+
+var img = new Image();
+img.src = "IIT_SAT_stack_186_white.png";
+ctx.drawImage(img, 330, 370, 250, 65);
+
 
 // Writing text on Canvas element
 ctx.font = "32px Sans-serif";
@@ -84,8 +94,20 @@ ctx.lineTo(580, 60);
 ctx.strokeStyle = "red";
 ctx.stroke();
 
-// Placing IIT image
-
+// Drawing the curve
+drawCurve();
+function drawCurve(){
+ctx.fillRect(270, 250, 300,100);
+ctx.stroke();    
+ctx.beginPath();
+ctx.moveTo(300, 305);
+ctx.quadraticCurveTo(365, 250 , 430, 305);
+ctx.quadraticCurveTo(495, 365 , 558, 305);
+ctx.lineWidth = 2;
+ctx.strokeStyle = 'black';
+ctx.setLineDash([8]);
+ctx.stroke();
+       }
        }    
        ); //close event listener
 	</script>
