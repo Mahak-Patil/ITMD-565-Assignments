@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ITMD-4/565 Lab 3 - Canvas Drawing</title>
+	<style type="text/css">
+		#content-wrapper {
+			width: 600px;
+			margin: 0 auto;
+			text-align: center;
+		}
+		#canvasRun {
+			background-color: #c00;
+			border: 0;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div id="content-wrapper">
+		<button id="canvasRun">Draw Canvas</button><br><br>
+		<canvas id="myCanvas" width="600" height="450"></canvas>
+	    <img id="IIT" width="" height="" src="">
+    </div>
+	<script type="text/javascript">
+		// Canvas Drawing Code Here
+       // Creating the gradient:
+       var canvasRunButton = document.getElementById('canvasRun');
+       
+       canvasRunButton.addEventListener('click', function(){
+       var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+//creating backround gradient
+var grd = ctx.createLinearGradient(0,0,0,450);
+grd.addColorStop(1,"black");
+grd.addColorStop(0,"white");
+ctx.fillStyle = grd;
+ctx.fillRect(10,10,600,450);
+
+// Writing text on Canvas element
+ctx.font = "32px Sans-serif";
+ctx.fillStyle = "red";
+ctx.textAlign = "center";
+ctx.fillText("ITMD 565 Canvas Lab", c.width/2, c.height/10);
+ctx.beginPath();
+ctx.moveTo(30, 60);
+ctx.lineTo(580, 60);
+ctx.strokeStyle = "red";
+ctx.stroke();
+
+//creating circle
+var centreX = c.width / 5;
+var centreY = c.height / 3;
+var radius = 65;
+ctx.beginPath();
+ctx.arc(centreX, centreY, radius, 0, 2 * Math.PI, false);
+ctx.fillStyle = "#0000C8";
+ctx.fill();
+ctx.lineWidth = 2;
+ctx.strokeStyle = 'white';
+ctx.stroke();
+
+//creating triangle
+ctx.beginPath();
+ctx.moveTo(120, 250);
+ctx.lineTo(50, 350);
+ctx.lineTo(190, 350);
+ctx.closePath();
+ctx.fillStyle = "#00C800";
+ctx.lineWidth = .5;
+ctx.strokeStyle = "black";
+ctx.fill();
+ctx.stroke();
+
+// Creating name tag
+ctx.font = "14px Sans-serif";
+ctx.fillStyle = "white";
+ctx.textAlign = "left";
+ctx.fillText("Mahak Patil", 40, 400);
+ctx.fillText("mpatil@hawk.iit.edu", 40, 420);
+ctx.beginPath();
+ctx.moveTo(30, 60);
+ctx.lineTo(580, 60);
+ctx.strokeStyle = "red";
+ctx.stroke();
+
+// Placing IIT image
+
+       }    
+       ); //close event listener
+	</script>
+</body>
+</html>
