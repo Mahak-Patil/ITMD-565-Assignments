@@ -41,13 +41,17 @@ grd.addColorStop(0,"white");
 ctx.fillStyle = grd;
 ctx.fillRect(10,10,600,450);
 
-
+// IIT SAT Logo
 var img = new Image();
+img.onload = function(){
+    ctx.drawImage(img, 330, 370, 250, 65);
+
+};
 img.src = "IIT_SAT_stack_186_white.png";
-ctx.drawImage(img, 330, 370, 250, 65);
 
 
-// Writing text on Canvas element
+
+// Writing heding text on Canvas element
 ctx.font = "32px Sans-serif";
 ctx.fillStyle = "red";
 ctx.textAlign = "center";
@@ -58,6 +62,26 @@ ctx.lineTo(580, 60);
 ctx.strokeStyle = "red";
 ctx.stroke();
 
+// Creating the animated square
+if (c.getContext){
+ctx.beginPath();
+ ctx.fillRect(420, 80, 140, 140);
+ ctx.fillStyle = "red";
+ ctx.lineWidth = 2;
+ctx.strokeStyle = 'white';
+
+ctx.save();
+
+ctx.fillStyle = 'red';
+ctx.rotate((Math.PI/180)*45);
+
+ctx.fillRect( 490, 80, 140, 140);
+ctx.restore();
+
+ctx.fillRect( 420, 80, 140, 140);
+//ctx.stroke();
+
+}
 //creating circle
 var centreX = c.width / 5;
 var centreY = c.height / 3;
@@ -69,6 +93,8 @@ ctx.fill();
 ctx.lineWidth = 2;
 ctx.strokeStyle = 'white';
 ctx.stroke();
+
+
 
 //creating triangle
 ctx.beginPath();
@@ -82,6 +108,7 @@ ctx.strokeStyle = "black";
 ctx.fill();
 ctx.stroke();
 
+
 // Creating name tag
 ctx.font = "14px Sans-serif";
 ctx.fillStyle = "white";
@@ -93,6 +120,7 @@ ctx.moveTo(30, 60);
 ctx.lineTo(580, 60);
 ctx.strokeStyle = "red";
 ctx.stroke();
+
 
 // Drawing the curve
 drawCurve();
@@ -107,7 +135,9 @@ ctx.lineWidth = 2;
 ctx.strokeStyle = 'black';
 ctx.setLineDash([8]);
 ctx.stroke();
-       }
+};
+
+ 
        }    
        ); //close event listener
 	</script>
