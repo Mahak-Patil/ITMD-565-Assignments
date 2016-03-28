@@ -24,7 +24,7 @@
 	    
         </div>
         
-        
+   
 	<script type="text/javascript">
 		// Canvas Drawing Code Here
        // Creating the gradient:
@@ -33,6 +33,9 @@
        canvasRunButton.addEventListener('click', function(){
        var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+
+
+
 //creating backround gradient
 
 var grd = ctx.createLinearGradient(0,0,0,450);
@@ -41,17 +44,12 @@ grd.addColorStop(0,"white");
 ctx.fillStyle = grd;
 ctx.fillRect(10,10,600,450);
 
-// IIT SAT Logo
-var img = new Image();
-img.onload = function(){
-    ctx.drawImage(img, 330, 370, 250, 65);
-
-};
-img.src = "IIT_SAT_stack_186_white.png";
 
 
 
-// Writing heding text on Canvas element
+
+
+// Writing heading text on Canvas element
 ctx.font = "32px Sans-serif";
 ctx.fillStyle = "red";
 ctx.textAlign = "center";
@@ -62,26 +60,24 @@ ctx.lineTo(580, 60);
 ctx.strokeStyle = "red";
 ctx.stroke();
 
-// Creating the animated square
-if (c.getContext){
+
+// Drawing arc
 ctx.beginPath();
- ctx.fillRect(420, 80, 140, 140);
- ctx.fillStyle = "red";
- ctx.lineWidth = 2;
-ctx.strokeStyle = 'white';
+var startArc = 1.4 * Math.PI;
+var endArc = 2.3 * Math.PI;
+ctx.arc(300, 150, 70, startArc, endArc, false);
 
-ctx.save();
 
-ctx.fillStyle = 'red';
-ctx.rotate((Math.PI/180)*45);
+ctx.lineWidth = 15;
+ctx.strokeStyle = '#FFA500';
+ctx.stroke();
 
-ctx.fillRect( 490, 80, 140, 140);
-ctx.restore();
 
-ctx.fillRect( 420, 80, 140, 140);
-//ctx.stroke();
 
-}
+      
+
+
+
 //creating circle
 var centreX = c.width / 5;
 var centreY = c.height / 3;
@@ -109,6 +105,15 @@ ctx.fill();
 ctx.stroke();
 
 
+// IIT SAT Logo
+var img = new Image();
+img.onload = function(){
+    ctx.drawImage(img, 330, 370, 250, 65);
+
+};
+img.src = "IIT_SAT_stack_186_white.png";
+
+
 // Creating name tag
 ctx.font = "14px Sans-serif";
 ctx.fillStyle = "white";
@@ -125,9 +130,10 @@ ctx.stroke();
 // Drawing the curve
 drawCurve();
 function drawCurve(){
+    ctx.beginPath();
 ctx.fillRect(270, 250, 300,100);
 ctx.stroke();    
-ctx.beginPath();
+
 ctx.moveTo(300, 305);
 ctx.quadraticCurveTo(365, 250 , 430, 305);
 ctx.quadraticCurveTo(495, 365 , 558, 305);
@@ -138,6 +144,39 @@ ctx.stroke();
 };
 
  
+//Drawing animated square
+//ctx.beginPath();
+//ctx.fillRect(440,80, 120, 120);
+ctx.translate(490, 150);
+
+
+
+ctx.save();
+var n = 1;
+setInterval(rotateObj, 100);
+//setInterval(ctx.restore(),99);
+
+function rotateObj(){
+    
+   
+    //ctx.restore();
+   // ctx.beginPath();
+    ctx.fillStyle = '#C80000';
+    ctx.fillRect(-25, -25, 50, 50);
+    
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'black';
+    ctx.stroke();  
+    
+    n = n + 1;    
+    ctx.rotate(n * 0.017);
+    ctx.restore();
+  
+}
+
+
+
+
        }    
        ); //close event listener
 	</script>
