@@ -27,7 +27,7 @@
    
 	<script type="text/javascript">
 		// Canvas Drawing Code Here
-       // Creating the gradient:
+    
        var canvasRunButton = document.getElementById('canvasRun');
        
        canvasRunButton.addEventListener('click', function(){
@@ -35,9 +35,12 @@
            // Disbale button to avoid repeated pressing
            
            document.getElementById("canvasRun").disabled = true;
+      
+      
+      //for animation
        var c = document.getElementById("myCanvas");
        if (c.getContext){
- window.requestAnimationFrame(drawAnimation);
+ window.requestAnimationFrame(drawAnimation); 
 }
 var ctx = c.getContext("2d");
 var n = 2;
@@ -45,52 +48,53 @@ var n = 2;
 
  drawEverything();
 //ctx.save();
+//ctx.translate(-490,-150);
+//drawAnimation()
+//ctx.restore();
 
-ctx.restore();
+/*function rotate(){
+ctx.clearRect(0,0,600,450);
+drawEverything();
+ctx.translate(490,150);
+ctx.rotate(0.2);
+ctx.translate(-490,-150);
+drawAnimation();
+}
+setInterval(rotate,100);
+*/
 
-
-function drawAnimation(){
-    // Draw animated square
+//function to implement animation
+function drawAnimation(){ 
     
-ctx.save();
-   ctx.translate(490,150);
-    n++;
-    ctx.rotate(n*0.017)
+   // ctx.translate(490,150);
+    //n++;
+    //ctx.rotate(n*0.017)
 
    ctx.beginPath();
+    ctx.fillRect(443,90, 120, 120);
     ctx.fillStyle = '#C80000';
-    ctx.fillRect(-70,-70, 120, 120);
+    ctx.fill();
    ctx.lineWidth = 3;
     ctx.strokeStyle = 'white';
+    ctx.setLineDash([0]);
     ctx.stroke();
-    ctx.closePath();
-  
-ctx.restore();
-
-ctx.save();
+   ctx.closePath();
 
     // Draw animated arc
-    ctx.translate(270,150);
-   var startArc = 1.5 * Math.PI;
+    ctx.beginPath();
+    var startArc = 1.5 * Math.PI;
 var endArc = 2.3 * Math.PI;
-ctx.arc(0, 0, 70, startArc, endArc, false);
+ctx.arc(270, 160, 70, startArc, endArc, false);
 ctx.lineWidth = 15;
 ctx.strokeStyle = '#FFA500';
 ctx.setLineDash([0]);
 ctx.stroke();
 ctx.closePath();
-
- ctx.restore();
-
-
- window.requestAnimationFrame(drawAnimation);
-/** ctx.translate(-490,-150);
-
- ctx.restore();*/
- 
+ //window.requestAnimationFrame(drawAnimation);
+    
 };
 
-
+//function to draw all static objects
 function drawEverything() {
 
 //creating backround gradient
@@ -185,7 +189,27 @@ ctx.setLineDash([8]);
 ctx.stroke();
 ctx.closePath();
 
+//Draw square
+ctx.beginPath();
+    ctx.rect(443,90, 120, 120);
+    ctx.fillStyle = '#C80000';
+    ctx.fill();
+   ctx.lineWidth = 7;
+    ctx.strokeStyle = 'white';
+    ctx.setLineDash([0]);
+    ctx.stroke();
+   ctx.closePath();
 
+    // Draw animated arc
+    ctx.beginPath();
+    var startArc = 1.5 * Math.PI;
+var endArc = 2.1 * Math.PI;
+ctx.arc(270, 160, 70, startArc, endArc, false);
+ctx.lineWidth = 15;
+ctx.strokeStyle = '#FFA500';
+ctx.setLineDash([0]);
+ctx.stroke();
+ctx.closePath();
 }
        }    
       
