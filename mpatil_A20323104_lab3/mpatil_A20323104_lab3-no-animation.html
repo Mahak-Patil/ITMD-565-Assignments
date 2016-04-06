@@ -47,29 +47,11 @@ var n = 2;
 
 
  drawEverything();
-//ctx.save();
-//ctx.translate(-490,-150);
-//drawAnimation()
-//ctx.restore();
-
-/*function rotate(){
-ctx.clearRect(0,0,600,450);
-drawEverything();
-ctx.translate(490,150);
-ctx.rotate(0.2);
-ctx.translate(-490,-150);
-drawAnimation();
-}
-setInterval(rotate,100);
-*/
 
 //function to implement animation
 function drawAnimation(){ 
     
-   // ctx.translate(490,150);
-    //n++;
-    //ctx.rotate(n*0.017)
-
+   //Square
    ctx.beginPath();
     ctx.fillRect(443,90, 120, 120);
     ctx.fillStyle = '#C80000';
@@ -80,7 +62,7 @@ function drawAnimation(){
     ctx.stroke();
    ctx.closePath();
 
-    // Draw animated arc
+  // Arc
     ctx.beginPath();
     var startArc = 1.5 * Math.PI;
 var endArc = 2.3 * Math.PI;
@@ -125,7 +107,7 @@ ctx.closePath();
 
 var img = new Image();
 img.onload = function(){
-    ctx.drawImage(img, 330, 370, 250, 65);
+    ctx.drawImage(img, 320, 370, 250, 65);
 
 };
 img.src = "IIT_SAT_stack_186_white.png";
