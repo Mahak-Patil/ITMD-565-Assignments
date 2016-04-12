@@ -1,0 +1,25 @@
+{
+  "name": "jscs-preset-gulp",
+  "version": "1.0.0",
+  "description": "Sharable jscs config for gulp projects",
+  "author": "Blaine Bublitz <blaine@iceddev.com> (http://iceddev.com)",
+  "contributors": [],
+  "repository": "gulpjs/jscs-preset-gulp",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "main": "jscs.json",
+  "files": [
+    "LICENSE",
+    "jscs.json"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jscs",
+    "jscs-preset",
+    "jscs preset"
+  ]
+}
