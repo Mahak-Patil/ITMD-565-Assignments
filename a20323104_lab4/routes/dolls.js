@@ -67,7 +67,7 @@ router.get('/dolls', function(req, res, next) {
   res.json(dolls);
 });
 
-
+/** 
 router.post('/', function(req, res, next) {
 	console.log(findMaxId());
 	var new_dolls_id = (findMaxId()).id + 1;
@@ -86,9 +86,11 @@ router.post('/', function(req, res, next) {
 	res.redirect('/dolls/');
 });
 
+
 router.get('/add', function(req, res, next) {
 	res.render('add', {dolls:{}});
 });
+*/
 
 router.route('/:dolls_id')
 	.all(function(req, res, next){
@@ -97,9 +99,9 @@ router.route('/:dolls_id')
 		next();
 	})
 	.get(function(req,res,next){
-		res.render('edit', {dolls: dolls});
+		res.render('display', {dolls: dolls});
 	})
-	.post(function(req,res,next){
+/** 	.post(function(req,res,next){
 		res.send('Post for doll ' + dolls_id);
 	})
 	.put(function(req,res,next){
@@ -111,5 +113,5 @@ router.route('/:dolls_id')
 		fs.writeFileSync(dataPath, JSON.stringify(dolls));
         res.send('Delete for contact ' + contact_id);
 	});
-    
+    */
     module.exports = router;

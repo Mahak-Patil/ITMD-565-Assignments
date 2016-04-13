@@ -1,25 +1,18 @@
 extend layout
 
 block content
-  h1 Your Dolls
-  p Here is a list of your dolls.
-  p
-    a#add.btn.btn-default(href="/dolls/add") Add new
+  h1 These are the available dolls:
   table.table
     thead
       tr
-        th Name
-        th Hair Color
-        th Eye Color
-        th Clothes
+        th NAME
+        th HAIR COLOR
+        th EYE COLOR
+        th CLOTHES
     tbody
-      if !dolls.length
-        tr
-          td(colspan=4) You should add a doll
-      else
         each doll in dolls
           tr
-            
+            br
             td
               a(href="/dolls/#{doll.id}") #{doll.name}
             td #{doll.hair}

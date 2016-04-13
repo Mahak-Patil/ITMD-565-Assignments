@@ -15,6 +15,12 @@ p {
     font: 25px "sans-serif";
 }
 
+th{
+    
+    font: 25px "bold sans-serif";
+}
+
 td{
-    font: 25px "sans-serif";
+   
+    font: 20px "sans-serif";
 }
