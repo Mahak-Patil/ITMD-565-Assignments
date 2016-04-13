@@ -4,28 +4,19 @@ block content
   h1 Your Dolls
   p Here is a list of your dolls.
   p
-    a#delete.btn.btn-default(hrer="#") Delete
-    |  
     a#add.btn.btn-default(href="/dolls/add") Add new
   table.table
     thead
       tr
-        th
         th Name
         th Hair Color
         th Eye Color
         th Clothes
     tbody
-      if !dollss.length
-        tr
-          td(colspan=4) You should add a doll
-      else
-        each dolls in dolls
+      if dolls.length
+        each doll in dolls
           tr
-            td
-              input(type="checkbox", id=dolls.id)
             td
               a(href="/dolls/#{dolls.id}") #{dolls.name}
             td #{dolls.hair}
-            td #{dolls.eyes}
-            td #{dolls.clothes}
+            

@@ -59,7 +59,7 @@ function findMaxId() {
 }
 
 router.get('/', function(req, res, next) {
-  res.render('list', {dolls: dollss});
+  res.render('list', {dolls: dolls});
 });
 
 router.get('/api', function(req, res, next) {
@@ -77,7 +77,7 @@ router.post('/', function(req, res, next) {
 		eyes: req.body.eyes,
         clothes: req.body.clothes
 	};
-	dollss.push(new_dolls);
+	dolls.push(new_dolls);
 	console.log(dolls);
 	fs.writeFileSync(dataPath, JSON.stringify(dolls));
 
@@ -92,7 +92,7 @@ router.get('/add', function(req, res, next) {
 router.route('/:dolls_id')
 	.all(function(req, res, next){
 		dolls_id = req.params.dolls_id;
-		dolls = lookupContact(dolls_id);
+		dolls = lookupDoll(dolls_id);
 		next();
 	})
 	.get(function(req,res,next){
