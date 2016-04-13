@@ -13,10 +13,15 @@ block content
         th Eye Color
         th Clothes
     tbody
-      if dolls.length
+      if !dolls.length
+        tr
+          td(colspan=4) You should add a doll
+      else
         each doll in dolls
           tr
             td
-              a(href="/dolls/#{dolls.id}") #{dolls.name}
-            td #{dolls.hair}
-            
+              input(type="checkbox", id=dolls.id)
+            td
+              a(href="/dolls/#{doll.id}") #{doll.name}
+            td #{doll.hair}
+            td #{doll.eyes}
