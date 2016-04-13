@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+<<<<<<< HEAD
     "start": "node node_modules/.bin/supervisor ./bin/www"
+=======
+    "start": "node_modules/.bin/supervisor"
+>>>>>>> d6b53818de9781388733934d92bc59d58b61c1e1
   },
   "dependencies": {
     "body-parser": "~1.13.2",

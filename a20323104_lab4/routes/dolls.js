@@ -46,7 +46,7 @@ try {
 	fs.writeFileSync(dataPath, JSON.stringify([]));
 }
 
-function lookupDoll(contact_id) {
+function lookupDoll(dolls_id) {
   return _.find(dolls, function(c) {
     return c.id == parseInt(dolls_id);
   });
