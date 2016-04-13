@@ -19,9 +19,9 @@ block content
       else
         each doll in dolls
           tr
-            td
-              input(type="checkbox", id=dolls.id)
+            
             td
               a(href="/dolls/#{doll.id}") #{doll.name}
             td #{doll.hair}
             td #{doll.eyes}
+            td #{doll.clothes}

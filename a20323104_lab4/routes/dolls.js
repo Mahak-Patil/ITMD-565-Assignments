@@ -62,10 +62,11 @@ router.get('/', function(req, res, next) {
   res.render('list', {dolls: dolls});
 });
 
-router.get('/api', function(req, res, next) {
+router.get('/dolls', function(req, res, next) {
   //res.render('list', {contacts: contacts});
   res.json(dolls);
 });
+
 
 router.post('/', function(req, res, next) {
 	console.log(findMaxId());
