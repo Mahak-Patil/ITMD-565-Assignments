@@ -3,7 +3,7 @@ var router = express.Router();
 var _ = require('underscore');
 var fs = require('fs');
 
-var dolls = [
+var doll = [
     
   {
      id: 1,
@@ -47,7 +47,7 @@ try {
 }
 
 function lookupDoll(dolls_id) {
-  return _.find(dolls, function(c) {
+  return _.find(doll, function(c) {
     return c.id == parseInt(dolls_id);
   });
 }
@@ -59,7 +59,7 @@ function findMaxId() {
 }
 
 router.get('/', function(req, res, next) {
-  res.render('list', {dolls: dolls});
+  res.render('list', {dolls: doll});
 });
 
 router.get('/dolls', function(req, res, next) {

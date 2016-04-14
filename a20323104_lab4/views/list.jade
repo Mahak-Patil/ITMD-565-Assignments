@@ -1,10 +1,11 @@
 extend layout
 
 block content
-  h1 These are the available dolls:
+  h2 Click on the available dolls:
   table.table
     thead
       tr
+        th
         th NAME
         th HAIR COLOR
         th EYE COLOR
@@ -13,6 +14,7 @@ block content
         each doll in dolls
           tr
             br
+            td
             td
               a(href="/dolls/#{doll.id}") #{doll.name}
             td #{doll.hair}
