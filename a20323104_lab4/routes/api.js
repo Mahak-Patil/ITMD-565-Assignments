@@ -51,20 +51,8 @@ function lookupDoll(dolls_id) {
     return c.id == parseInt(dolls_id);
   });
 }
-/*
-function findMaxId() {
-  return _.max(dolls, function(dolls) {
-    return dolls.id;
-  });
-}
-*/
-/*
-router.get('/', function(req, res, next) {
-  res.render('list', {dolls: doll});
-});
-*/
+
 router2.get('/dolls', function(req, res, next) {
-  //res.render('list', {contacts: contacts});
   res.json(doll);
 
 });
@@ -72,7 +60,7 @@ router2.get('/dolls', function(req, res, next) {
 
 
  
-router2.route('/:dolls_id')
+router2.route('/dolls/:dolls_id')
 	.all(function(req, res, next){
 		dolls_id = req.params.dolls_id;
 		dolls = lookupDoll(dolls_id);
@@ -82,17 +70,5 @@ router2.route('/:dolls_id')
 		res.render('display', {dolls: dolls});
 	    //res.json(dolls);
 })
-/** 	.post(function(req,res,next){
-		res.send('Post for doll ' + dolls_id);
-	})
-	.put(function(req,res,next){
-		dolls.name = req.body.fullname;
-		dolls.hair = req.body.hair;
-		dolls.eyes = req.body.eyes;
-        dolls.clothes = req.body.clothes;
 
-		fs.writeFileSync(dataPath, JSON.stringify(dolls));
-        res.send('Delete for contact ' + contact_id);
-	});
-    */
     module.exports = router2;

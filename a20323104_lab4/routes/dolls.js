@@ -52,13 +52,6 @@ function lookupDoll(dolls_id) {
   });
 }
 
-/*
-function findMaxId() {
-  return _.max(dolls, function(dolls) {
-    return dolls.id;
-  });
-}
-*/
 router.get('/', function(req, res, next) {
   res.render('list', {dolls: doll});
 });
