@@ -7,34 +7,34 @@ var doll = [
     
   {
      id: 1,
-     name: 'Anna',
-     hair: 'brown',
-     eyes: 'green',
-     clothes: 'dress'     
+     name: 'Elsa',
+     hair: 'Platinum white',
+     eyes: 'Sparkling blue',
+     clothes: 'Long, flowy dress'     
    },
    {
             id: 2,
-     name: 'Elsa',
-     hair: 'white',
-     eyes: 'green',
-     clothes: 'dress'  
+     name: 'Snow White',
+     hair: 'Jet black',
+     eyes: 'Soft brown',
+     clothes: 'Yellow skirt and blue top'  
    },
     {
      id: 3,
-     name: 'Kevin',
-     hair: 'black',
-     eyes: 'brown',
-     clothes: 'blue jumpers'  
+     name: 'Cindrella',
+     hair: 'Blonde',
+     eyes: 'Blue',
+     clothes: 'White ball gown'  
    },
    {
      id: 4,
-     name: 'Gru',
-     hair: 'black',
-     eyes: 'black',
-     clothes: 'suit'  
+     name: 'Belle',
+     hair: 'Brown',
+     eyes: 'Brown',
+     clothes: 'Blue dress with a white apron'  
    }
  ];
-var contacts = [];
+var dolls = [];
 var dataPath = 'data.json';
 
 try {
@@ -63,8 +63,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/dolls', function(req, res, next) {
-  //res.render('list', {contacts: contacts});
-  res.json(dolls);
+  res.render('list', {dolls: doll});
+ // res.json(dolls);
 });
 
 /** 

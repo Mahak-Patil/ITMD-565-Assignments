@@ -1,7 +1,7 @@
 extend layout
 
 block content
-  h2 Click on the available dolls:
+  h2 CLICK ON THE DOLL TO SEE MORE:
   table.table
     thead
       tr
@@ -17,6 +17,9 @@ block content
             td
             td
               a(href="/dolls/#{doll.id}") #{doll.name}
-            td #{doll.hair}
-            td #{doll.eyes}
-            td #{doll.clothes}
+            td 
+              a(href="/dolls/#{doll.id}") #{doll.hair}
+            td 
+              a(href="/dolls/#{doll.id}") #{doll.eyes}
+            td 
+              a(href="/dolls/#{doll.id}") #{doll.clothes}

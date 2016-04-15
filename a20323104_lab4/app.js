@@ -8,6 +8,7 @@ var methodOverride = require('method-override');
 
 var routes = require('./routes/index');
 var dolls = require('./routes/dolls');
+var api = require('./routes/api');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/dolls', dolls);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
