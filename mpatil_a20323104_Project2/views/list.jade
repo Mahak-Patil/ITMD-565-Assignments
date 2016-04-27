@@ -1,22 +1,30 @@
 extend layout
 
 block content
-  h2 CLICK ON THE DOLL TO SEE MORE:
+  h1 Your contacts
+  p Here is a list of your contacts.
+  p
+    a#delete.btn.btn-default(hrer="#") Delete
+    |  
+    a#add.btn.btn-default(href="/contacts/add") Add new
   table.table
     thead
       tr
         th
-        th NAME
-        th HAIR COLOR
-        th EYE COLOR
-        th CLOTHES
+        th Name
+        th Title
+        th Email
     tbody
-        each doll in dolls
+      if !contacts.length
+        tr
+          td(colspan=4) You should add a contact
+      else
+        each contact in contacts
           tr
-            br
             td
+              input(type="checkbox", id=contact.id)
             td
-              a(href="/dolls/#{doll.id}") #{doll.name}
-            td #{doll.hair}
-            td #{doll.eyes}
-            td #{doll.clothes}
+              a(href="/contacts/#{contact.id}") #{contact.name}
+            td #{contact.title}
+            td
+              a(href="mailto:#{contact.email}") #{contact.email}

@@ -9,7 +9,7 @@ $(document).ready(function(){
       var $thisInput = $(this);
 
       $.ajax({
-        url:'/dolls/'+val, 
+        url:'/contacts/'+val, 
         type:'DELETE'
       }).done(function(){
         $thisInput.parents('tr').remove();
