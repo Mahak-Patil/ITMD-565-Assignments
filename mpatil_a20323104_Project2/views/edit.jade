@@ -3,7 +3,7 @@ extends layout
 block content
   .row
     .col-md-6
-      h1 Edit a contact
-      form(role="form", method="post", action="/contacts/#{contact.id}?_method=put")
+      h1 Edit a Doll
+      form(role="form", method="post", action="/dolls/#{doll.id}?_method=put")
         include editform
-        button.btn.btn-primary(type="submit") Edit user
+        button.btn.btn-primary(type="submit") Edit Doll
