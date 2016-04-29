@@ -62,8 +62,8 @@ router.get('/', function(req, res, next) {
   res.render('list', {dolls: dolls});
 });
 
+
 router.get('/api', function(req, res, next) {
-  //res.render('list', {dolls: dolls});
   res.json(dolls);
 });
 
@@ -80,14 +80,14 @@ router.post('/', function(req, res, next) {
 	dolls.push(new_doll);
 	console.log(dolls);
 	fs.writeFileSync(dataPath, JSON.stringify(dolls));
-
-	//res.send("New doll created with id: " + new_doll.id);
 	res.redirect('/dolls/');
 });
 
 router.get('/add', function(req, res, next) {
 	res.render('add', {doll:{}});
 });
+
+
 
 router.route('/:doll_id')
 	.all(function(req, res, next){
@@ -108,17 +108,18 @@ router.route('/:doll_id')
 		doll.clothes = req.body.clothes;
 
 		fs.writeFileSync(dataPath, JSON.stringify(dolls));
-
-		//res.send('Update succeeded for doll ' + doll_id);
 		res.redirect('/dolls/');
 	})
+	
+	
+	
 	.delete(function(req,res,next){
 		for (var i = 0; i < dolls.length; i++) {
 			if (dolls[i].id === parseInt(doll_id)) {
 				dolls.splice(i, 1);
 			}
 		}
-		//console.log(dolls);
+		
 		fs.writeFileSync(dataPath, JSON.stringify(dolls));
 		res.send('Delete for doll ' + doll_id);
 	});

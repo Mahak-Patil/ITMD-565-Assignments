@@ -1,0 +1,22 @@
+extend layout
+
+block content
+  h2 CLICK ON THE DOLL TO SEE MORE:
+  table.table
+    thead
+      tr
+        th
+        th NAME
+        th HAIR COLOR
+        th EYE COLOR
+        th CLOTHES
+    tbody
+        each doll in dolls
+          tr
+            br
+            td
+            td
+              a(href="/dolls/#{doll.id}") #{doll.name}
+            td #{doll.hair}
+            td #{doll.eyes}
+            td #{doll.clothes}

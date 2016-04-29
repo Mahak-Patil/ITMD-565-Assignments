@@ -1,18 +1,23 @@
 extend layout
 
 block content
-  h1 CLICK THE DOLL TO SEE MORE:
- 
-    a#delete.btn.btn-default(hrer="#") Delete
+  h1 CLICK THE DOLL TO EDIT:
+    p
+    a#add.btn.btn-primary(href="/dolls/add") Add Doll
     |  
-    a#add.btn.btn-default(href="/dolls/add") Add Doll
+    a#delete.btn.btn-danger(hrer="#") Delete
+    |  
+    a.btn.btn-info(href="/") Back
+    p  
+    a.btn.btn-link(href="/dolls/api") SHOW ME JSON API
+    
   table.table
     thead
       tr
         th
         th NAME
-        th EYES
         th HAIR
+        th EYES
         th CLOTHES
     tbody
       if !dolls.length
@@ -28,3 +33,4 @@ block content
             td #{doll.hair}
             td #{doll.eyes}
             td #{doll.clothes}
+   
