@@ -63,7 +63,6 @@ router3.get('/', function(req, res, next) {
 });
 
 router3.get('/mapi', function(req, res, next) {
-  //res.render('list', {movies: movies});
   res.json(movies);
 });
 
@@ -80,9 +79,7 @@ production_house: req.body.production_house
 	movies.push(new_movie);
 	console.log(movies);
 	fs.writeFileSync(dataPath, JSON.stringify(movies));
-
-	//res.send("New movie created with id: " + new_movie.id);
-	res.redirect('/movies/');
+  res.redirect('/movies/');
 });
 
 router3.get('/addMovie', function(req, res, next) {
@@ -102,15 +99,13 @@ router3.route('/:movie_id')
 		res.send('Post for movie ' + movie_id);
 	})
 	.put(function(req,res,next){
-		movie.name_doll = req.body.dollname;
+		movie.name_doll = req.body.dollName;
 		movie.name_movie = req.body.name_movie;
 		movie.year_of_release = req.body.year_of_release;
 		movie.production_house = req.body.production_house;
 
 		fs.writeFileSync(dataPath, JSON.stringify(movies));
-
-		//res.send('Update succeeded for movie ' + movie_id);
-		res.redirect('/movies/');
+    res.redirect('/movies/');
 	})
 	.delete(function(req,res,next){
 		for (var i = 0; i < movies.length; i++) {
@@ -118,7 +113,7 @@ router3.route('/:movie_id')
 				movies.splice(i, 1);
 			}
 		}
-		//console.log(movies);
+		
 		fs.writeFileSync(dataPath, JSON.stringify(movies));
 		res.send('Delete for movie ' + movie_id);
 	});

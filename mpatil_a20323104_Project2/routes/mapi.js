@@ -51,48 +51,12 @@ function lookupMovie(movie_id) {
     return c.id == parseInt(movie_id);
   });
 }
-/*
-function findMaxId() {
-  return _.max(movies, function(movie) {
-    return movie.id;
-  });
-}
-
-
-router3.get('/', function(req, res, next) {
-  res.render('listMovie', {movies: movies});
-});
-
-*/
 
 router4.get('/movies', function(req, res, next) {
-  //res.render('list', {movies: movies});
-  res.json(movies);
+ res.json(movies);
 });
 
-/*
-router3.post('/', function(req, res, next) {
-	console.log(findMaxId());
-	var new_movie_id = (findMaxId()).id + 1;
-	var new_movie = {
-		id: new_movie_id,
-		name_doll: req.body.dollName,
-		name_movie: req.body.name_movie,
-		year_of_release: req.body.year_of_release,
-production_house: req.body.production_house
-	};
-	movies.push(new_movie);
-	console.log(movies);
-	fs.writeFileSync(dataPath, JSON.stringify(movies));
 
-	//res.send("New movie created with id: " + new_movie.id);
-	res.redirect('/movies/');
-});
-
-router3.get('/addMovie', function(req, res, next) {
-	res.render('addMovie', {movie:{}});
-});
-*/
 router4.route('/movies/:movie_id')
 	.all(function(req, res, next){
 		movie_id = req.params.movie_id;
@@ -102,20 +66,5 @@ router4.route('/movies/:movie_id')
 	.get(function(req,res,next){
 		res.render('editMovie', {movie: movie});
 	})
-/*	.post(function(req,res,next){
-		res.send('Post for movie ' + movie_id);
-	})
-	.put(function(req,res,next){
-		movie.name_doll = req.body.dollname;
-		movie.name_movie = req.body.name_movie;
-		movie.year_of_release = req.body.year_of_release;
-		movie.production_house = req.body.production_house;
 
-		fs.writeFileSync(dataPath, JSON.stringify(movies));
-
-		//res.send('Update succeeded for movie ' + movie_id);
-		res.redirect('/movies/');
-	})
-	
-*/
 module.exports = router4;

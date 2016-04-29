@@ -28,9 +28,9 @@ block content
           tr
             td
               input(type="checkbox", id=movie.id)
-            td
-              a(href="/movies/#{movie.id}") #{movie.name_doll}
-            td #{movie.name_movie}
+            td #{movie.name_doll}
+            td 
+              a(href="/movies/#{movie.id}") #{movie.name_movie}
             td #{movie.year_of_release}
             td #{movie.production_house}
    
