@@ -1,5 +1,5 @@
 var express = require('express');
-var router3 = express.Router();
+var router4 = express.Router();
 var _ = require('underscore');
 var fs = require('fs');
 
@@ -8,8 +8,8 @@ var fs = require('fs');
      id: 1,
      name_doll: 'Elsa',
      name_movie: 'Frozen',
-		 year_of_release: '2013',
-		 production_house: 'Walt Disney Animation Studios'
+     year_of_release: '2013',
+	production_house: 'Walt Disney Animation Studios'
    },
    {
             id: 2,
@@ -51,22 +51,26 @@ function lookupMovie(movie_id) {
     return c.id == parseInt(movie_id);
   });
 }
-
+/*
 function findMaxId() {
   return _.max(movies, function(movie) {
     return movie.id;
   });
 }
 
+
 router3.get('/', function(req, res, next) {
   res.render('listMovie', {movies: movies});
 });
 
-router3.get('/mapi', function(req, res, next) {
+*/
+
+router4.get('/movies', function(req, res, next) {
   //res.render('list', {movies: movies});
   res.json(movies);
 });
 
+/*
 router3.post('/', function(req, res, next) {
 	console.log(findMaxId());
 	var new_movie_id = (findMaxId()).id + 1;
@@ -88,8 +92,8 @@ production_house: req.body.production_house
 router3.get('/addMovie', function(req, res, next) {
 	res.render('addMovie', {movie:{}});
 });
-
-router3.route('/:movie_id')
+*/
+router4.route('/movies/:movie_id')
 	.all(function(req, res, next){
 		movie_id = req.params.movie_id;
 		movie = lookupMovie(movie_id);
@@ -98,7 +102,7 @@ router3.route('/:movie_id')
 	.get(function(req,res,next){
 		res.render('editMovie', {movie: movie});
 	})
-	.post(function(req,res,next){
+/*	.post(function(req,res,next){
 		res.send('Post for movie ' + movie_id);
 	})
 	.put(function(req,res,next){
@@ -112,15 +116,6 @@ router3.route('/:movie_id')
 		//res.send('Update succeeded for movie ' + movie_id);
 		res.redirect('/movies/');
 	})
-	.delete(function(req,res,next){
-		for (var i = 0; i < movies.length; i++) {
-			if (movies[i].id === parseInt(movie_id)) {
-				movies.splice(i, 1);
-			}
-		}
-		//console.log(movies);
-		fs.writeFileSync(dataPath, JSON.stringify(movies));
-		res.send('Delete for movie ' + movie_id);
-	});
-
-module.exports = router3;
+	
+*/
+module.exports = router4;

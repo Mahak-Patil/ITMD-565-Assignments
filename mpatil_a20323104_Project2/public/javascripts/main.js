@@ -14,6 +14,13 @@ $(document).ready(function(){
       }).done(function(){
         $thisInput.parents('tr').remove();
       });
+      
+      $.ajax({
+        url:'/movies/'+val, 
+        type:'DELETE'
+      }).done(function(){
+        $thisInput.parents('tr').remove();
+      });
 
     });
   }); 
