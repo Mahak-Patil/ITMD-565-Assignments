@@ -1,0 +1,36 @@
+extend layout
+
+block content
+  h1 CLICK THE MOVIE TO EDIT:
+    p
+    a#add.btn.btn-primary(href="/movies/addMovie") Add Movie
+    |  
+    a#delete.btn.btn-danger(hrer="#") Delete
+    |  
+    a.btn.btn-info(href="/") Back
+    p  
+    a.btn.btn-link(href="/movies/mapi") SHOW ME JSON API
+    
+  table.table
+    thead
+      tr
+        th
+        th NAME OF DOLL
+        th NAME OF MOVIE
+        th YEAR OF RELEASE
+        th PRODUCTION HOUSE
+    tbody
+      if !movies.length
+        tr
+          td(colspan=4) You should add a movie
+      else
+        each movie in movies
+          tr
+            td
+              input(type="checkbox", id=movie.id)
+            td #{movie.name_doll}
+            td 
+              a(href="/movies/#{movie.id}") #{movie.name_movie}
+            td #{movie.year_of_release}
+            td #{movie.production_house}
+   

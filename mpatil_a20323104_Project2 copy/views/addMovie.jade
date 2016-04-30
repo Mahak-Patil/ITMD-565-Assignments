@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  .row
+    .col-md-6
+      h2 Add a movie to the collection
+      form(role="form", method="post", action="/movies/")
+        include editformMovie
+        button.btn.btn-primary(type="submit") Add Movie
+        |  
+        a.btn.btn-danger(href="/dolls") Cancel

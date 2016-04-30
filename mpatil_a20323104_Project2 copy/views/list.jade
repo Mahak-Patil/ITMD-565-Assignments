@@ -1,0 +1,36 @@
+extend layout
+
+block content
+  h1 CLICK THE DOLL TO EDIT:
+    p
+    a#add.btn.btn-primary(href="/dolls/add") Add Doll
+    |  
+    a#delete.btn.btn-danger(hrer="#") Delete
+    |  
+    a.btn.btn-info(href="/") Back
+    p  
+    a.btn.btn-link(href="/dolls/api") SHOW ME JSON API
+    
+  table.table
+    thead
+      tr
+        th
+        th NAME
+        th HAIR
+        th EYES
+        th CLOTHES
+    tbody
+      if !dolls.length
+        tr
+          td(colspan=4) You should add a doll
+      else
+        each doll in dolls
+          tr
+            td
+              input(type="checkbox", id=doll.id)
+            td
+              a(href="/dolls/#{doll.id}") #{doll.name}
+            td #{doll.hair}
+            td #{doll.eyes}
+            td #{doll.clothes}
+   
